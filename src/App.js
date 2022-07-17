@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import LineChart from './LineChart';
+import LineChart from './LineChartComponent/LineChart.js';
 
 function App() {
   return (
