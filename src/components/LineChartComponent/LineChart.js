@@ -56,6 +56,10 @@ const LineChart = () => {
 							.domain(d3.extent(CountsByDate, function(d){return d.date}))
 							.range([0,width])
 
+				// const x = d3.scaleTime()
+				// 			.domain([0, CountsByDate.length - 1])
+				// 			.range([0,width])
+
 				svg.append('g')
 					.attr('transform', 'translate(0,' + height + ')')
 					.call(d3.axisBottom(x))

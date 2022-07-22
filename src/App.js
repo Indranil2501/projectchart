@@ -1,12 +1,12 @@
-import './App.css';
 import React from 'react';
-import LineChart from './LineChartComponent/LineChart.js';
+import './App.css';
+import MainDashboard from './components/mainDashboard/mainDashboard';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <LineChart />
+        <MainDashboard />
       </header>
     </div>
   );
