@@ -16,7 +16,7 @@ const LineChart = () => {
 				// Transform data
 				const permits = data.filter(event => {
 					return event.eventtype === 'Shooting Permit'
-				}) 
+				})
 
 				// Get all the dates in an array
 				const dates = [...new Set(permits.map(each=>each.enteredon.slice(0,10)))]
@@ -94,7 +94,7 @@ const LineChart = () => {
 					.attr('text-anchor', 'middle')
 					.attr('font-size', '16px')
 					.attr('fill','white')
-					.text('New York City Film Permits entered in 2020 - Shooting Permit')
+					.text('Line Chart')
 			})
 	},[])
 

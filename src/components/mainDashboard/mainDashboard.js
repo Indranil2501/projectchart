@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import LineChart from '../LineChartComponent/LineChart';
-import './LineChart.css';
+import StackedBarChart from '../StackedBarChartComponent/StackedBarChart';
 
 const MainDashboard = () => {
+	const [data, setData] = useState([]);
+
 	useEffect(() => {
 		regenerateData();
 	  }, []);
@@ -21,9 +23,14 @@ const MainDashboard = () => {
 	}
 
 	return (
-		<>
-			<LineChart />
-		</>
+		<div>
+			{/* <div>
+				<LineChart data={data}/>
+			</div> */}
+			<div>
+				<StackedBarChart/>
+			</div>
+		</div>
 	)
 }
 
