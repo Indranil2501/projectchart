@@ -3,7 +3,7 @@ import LineChart from '../LineChartComponent/LineChart';
 import StackedBarChart from '../StackedBarChartComponent/StackedBarChart';
 
 const MainDashboard = () => {
-	const [data, setData] = useState([]);
+	const [stackBarChartData, setStackBarChartData] = useState([]);
 
 	useEffect(() => {
 		regenerateData();
@@ -11,15 +11,17 @@ const MainDashboard = () => {
 	
 	function regenerateData() {
 		const chartData = [];
-		for (let i = 0; i < 20; i++) {
+		const group = ["Apple", "Banana", "Orange", "Lychee"];
+		for (let i = 0; i < 4; i++) {
 			const value = Math.floor(Math.random() * i + 3);
 			chartData.push({
-			label: i,
-			value,
-			tooltipContent: `<b>x: </b>${i}<br><b>y: </b>${value}`
+				group: group[i],
+				USA: (Math.random() * i).toString(),
+				India: (Math.random() * i).toString(),
+				Australia: (Math.random() * i).toString()
 			});
 		}
-		setData(chartData);
+		setStackBarChartData(chartData);
 	}
 
 	return (
@@ -28,7 +30,7 @@ const MainDashboard = () => {
 				<LineChart data={data}/>
 			</div> */}
 			<div>
-				<StackedBarChart/>
+				<StackedBarChart stackBarChartData={stackBarChartData}/>
 			</div>
 		</div>
 	)
