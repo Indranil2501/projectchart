@@ -12,8 +12,8 @@ const MainDashboard = () => {
 	  }, []);
 	
 	function generateStackBarChartData() {
-		const chartData = [];
-		const group = ["Apple", "Banana", "Orange", "Lychee"];
+		let chartData = [];
+		let group = ["Apple", "Banana", "Orange", "Lychee"];
 		for (let i = 0; i < 4; i++) {
 			const value = Math.floor(Math.random() * i + 3);
 			chartData.push({
@@ -27,8 +27,7 @@ const MainDashboard = () => {
 	}
 
 	function generateLineChartData() {
-		const chartData = [];
-		const group = ["Apple", "Banana", "Orange", "Lychee"];
+		let chartData = [];
 		for (let i = 0; i < 10; i++) {
 			const value = Math.floor(Math.random() * i + 3);
 			chartData.push({
@@ -36,13 +35,13 @@ const MainDashboard = () => {
 				count: Math.floor(Math.random() * i + 3)
 			});
 		}
-		setLineChartData(chartData);
+		setLineChartData(chartData.sort((a,b)=> (a.date > b.date ? 1 : -1)));
 	}
 
 	return (
 		<div>
 			<div>
-				<LineChart/>
+				<LineChart lineChartData={lineChartData}/>
 			</div>
 			{/* <div>
 				<StackedBarChart stackBarChartData={stackBarChartData}/>
