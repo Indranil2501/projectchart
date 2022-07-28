@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import LineChart from '../LineChartComponent/LineChart';
-import StackedBarChart from '../StackedBarChartComponent/StackedBarChart';
+import LineChart from '../LineChart/LineChart';
+//import StackedBarChart from '../StackedBarChart/StackedBarChart';
 
 const MainDashboard = () => {
 	const [stackBarChartData, setStackBarChartData] = useState([]);
+	const [lineChartData, setLineChartData] = useState([]);
 
 	useEffect(() => {
-		regenerateData();
+		generateStackBarChartData();
+		generateLineChartData();
 	  }, []);
 	
-	function regenerateData() {
+	function generateStackBarChartData() {
 		const chartData = [];
 		const group = ["Apple", "Banana", "Orange", "Lychee"];
 		for (let i = 0; i < 4; i++) {
@@ -24,14 +26,27 @@ const MainDashboard = () => {
 		setStackBarChartData(chartData);
 	}
 
+	function generateLineChartData() {
+		const chartData = [];
+		const group = ["Apple", "Banana", "Orange", "Lychee"];
+		for (let i = 0; i < 10; i++) {
+			const value = Math.floor(Math.random() * i + 3);
+			chartData.push({
+				date: new Date(new Date() - Math.random()*(1e+12)),
+				count: Math.floor(Math.random() * i + 3)
+			});
+		}
+		setLineChartData(chartData);
+	}
+
 	return (
 		<div>
-			{/* <div>
-				<LineChart data={data}/>
-			</div> */}
 			<div>
-				<StackedBarChart stackBarChartData={stackBarChartData}/>
+				<LineChart/>
 			</div>
+			{/* <div>
+				<StackedBarChart stackBarChartData={stackBarChartData}/>
+			</div> */}
 		</div>
 	)
 }
