@@ -6,30 +6,30 @@ const LineChart = (props) => {
 
 	const d3Chart = useRef()
 
-	const parseDate = d3.timeParse('%Y-%m-%d')
-
 	useEffect(()=>{
+
+		//Clear existing svg data
+		d3.select(d3Chart.current).selectAll('*').remove();
+
+		//Set design
 		const margin = {top: 20, right: 30, bottom: 30, left: 30}
 		const width = parseInt(d3.select('#d3demo').style('width')) - margin.left - margin.right
 		const height = parseInt(d3.select('#d3demo').style('height')) - margin.top - margin.bottom
 
-		// Set up chart
+		//Set svg
 		const svg = d3.select(d3Chart.current)
 						.attr('width', width + margin.left + margin.right)
 						.attr('height', height + margin.top + margin.bottom)
 						.append('g')
-							.attr('transform', 'translate('+ margin.left + ',' + margin.top + ')');
+						.attr('transform', 'translate('+ margin.left + ',' + margin.top + ')');
 
 		// x axis scale 
 		const x = d3.scaleTime()
 					.domain(d3.extent(props.lineChartData, function(d){return d.date}))
 					.range([0,width])
 
-		// const x = d3.scaleTime()
-		// 			.domain([0, props.lineChartData.length - 1])
-		// 			.range([0,width])
-
 		svg.append('g')
+			.attr("class", "x-axis")
 			.attr('transform', 'translate(0,' + height + ')')
 			.call(d3.axisBottom(x))
 
@@ -42,27 +42,36 @@ const LineChart = (props) => {
 					.range([height,0])
 
 		svg.append('g')
+			.attr('class', 'y-axis')
 			.call(d3.axisLeft(y))
-
 
 		// Draw line
 		svg.append('path')
 			.datum(props.lineChartData)
 			.attr('fill', 'none')
-			.attr('stroke','white')
+			.attr('stroke','#FFAA48')
 			.attr('stroke-width', 3)
 			.attr('d', d3.line()
 						.x(function(d){return x(d.date)})
 						.y(function(d){return y(d.count)})
 				)
 
+		//Set points
+		svg.append("g")
+			.selectAll("dot")
+			.join("circle")
+			.attr("cx", d => x(d.date))
+			.attr("cy", d => y(d.count))
+			.attr("r", 20)
+			.attr("fill", "#FF6060");
+
 		// Add title 
 		svg.append('text')
 			.attr('x',(width/2))
-			.attr('y', (margin.top/5 - 10))
+			.attr('y', (margin.top/3 - 10))
 			.attr('text-anchor', 'middle')
 			.attr('font-size', '16px')
-			.attr('fill','white')
+			.attr('fill','#49BFFF')
 			.text('Line Chart')
 
 	},[props.lineChartData])

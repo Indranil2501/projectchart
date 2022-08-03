@@ -2,3 +2,53 @@
     width: 80vw;
     height: 50vh;
 }
+
+.y-axis line {
+    stroke: #e8e8e8;
+}
+
+.y-axis path {
+    stroke: #e8e8e8;
+}
+
+.y-axis text {
+    fill: #43425D;
+}
+
+.x-axis line {
+    stroke: #e8e8e8;
+}
+
+.x-axis path {
+    stroke: #e8e8e8;
+}
+
+.x-axis text {
+    stroke: #474747;
+}
+
+.grid line {
+    stroke: #e8e8e8;
+    stroke-opacity: 0.7;
+    shape-rendering: crispEdges;
+}
+
+.check-color {
+    display: flex;
+    float: right;
+    position: relative;
+    bottom: 35px;
+}
+
+.check-color p {
+    color: #2A303B;
+    cursor: pointer;
+    padding: 0px 4px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    font: bold 10px/14px Roboto;
+    border: 2px solid #0DC6F6;
+    border-right: none;
+    display: flex;
+    align-items: center;
+}
+
