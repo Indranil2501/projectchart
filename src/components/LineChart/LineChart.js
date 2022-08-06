@@ -23,7 +23,7 @@ const LineChart = (props) => {
 			.append('g')
 			.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
-		// x axis scale 
+		// x axis 
 		const xScale = d3.scaleTime()
 			.domain(d3.extent(props.lineChartData, function (d) { return d.date }))
 			.range([0, width])
@@ -39,7 +39,7 @@ const LineChart = (props) => {
 		// Get the max value of counts
 		const max = d3.max(props.lineChartData, function (d) { return d.count })
 
-		// y axis scale 
+		// y axis 
 		const yScale = d3.scaleLinear()
 			.domain([0, max])
 			.range([height, 0]);
