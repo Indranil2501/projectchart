@@ -10,7 +10,7 @@ const Header = (props) {
                         <div className="navbar-brand mx-0">D3 Charts</div>
                     </div>
                     <div className="col pr-o text-right">
-                        <span>User: Indranil</span>
+                        <span>User: Indranil Das</span>
                     </div>
                 </nav>
             </header>
