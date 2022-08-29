@@ -32,7 +32,7 @@ const LineChart = (props) => {
 			.tickSize(-height);
 
 		svg.append('g')
-			.attr("class", "x-axis")
+			.attr("class", "x-axis") // Used for drawing grid lines
 			.attr('transform', 'translate(0,' + height + ')')
 			.call(xAxis)
 
@@ -48,7 +48,7 @@ const LineChart = (props) => {
 			.tickSize(-width);
 
 		svg.append('g')
-			.attr('class', 'y-axis')
+			.attr('class', 'y-axis') // Used for drawing grid lines
 			.call(yAxis);
 
 		// Draw line
